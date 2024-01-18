@@ -22,6 +22,7 @@ function apiCall( form ) {
                 '<th>Status</th>' +
                 '<th>Species</th>' +
                 '<th>Gender</th>' +
+                '<th>Photo</th>' +
                 '</tr>' +
                 '</thead>' +
                 '<tbody>';
@@ -29,14 +30,15 @@ function apiCall( form ) {
             if ( result.results ) {
                 result.results.forEach(function (value, key) {
                     appendDiv.innerHTML += '<tr>' +
-                        '<td>' + value.name + '</td>' +
-                        '<td>' + value.status + '</td>' +
-                        '<td>' + value.species + '</td>' +
-                        '<td>' + value.gender + '</td>' +
+                        '<td class="rm-td-centered">' + value.name + '</td>' +
+                        '<td class="rm-td-centered">' + value.status + '</td>' +
+                        '<td class="rm-td-centered">' + value.species + '</td>' +
+                        '<td class="rm-td-centered">' + value.gender + '</td>' +
+                        '<td class="rm-td-centered"><img src="' + value.image + '" alt="' + value.id + '" style="width: 50px; height: 50px;"></td>' +
                         '</tr>';
                 })
             } else
-                appendDiv.innerHTML += '<tr><td colspan="4" style="text-align: center">' + result.error + ', no results for this search (' + inputVal + ').</td></tr>';
+                appendDiv.innerHTML += '<tr><td colspan="5" style="text-align: center">' + result.error + ', no results for this search (' + inputVal + ').</td></tr>';
 
             appendDiv.innerHTML += '</tbody>';
             resultDiv.innerHTML += "<h3>Results:</h3>";
