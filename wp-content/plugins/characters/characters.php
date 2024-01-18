@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Characters, Rick&Morty Series
-Description: Used to show a bar search to filter data characters of the Rick and Morty series.
+Description: Used to <strong>enable a shortcode</strong> on pages/posts to show a search bar to filter data characters of the Rick and Morty series. Juts add <strong>'[chars][/chars]'</strong> shortcode on any place of the page/post and it will render a search bar capable to search a character of the series by name (for the moment), and it will show the results on a table element.
 Version: 1.0
 Author: Omar Alvarez
 Author URI: https://github.com/ohmalvarez
