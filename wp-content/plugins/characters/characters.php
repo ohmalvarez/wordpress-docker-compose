@@ -56,24 +56,24 @@ function char_shortcode( $atts = [] ) {
     // label
     $o .= '<label class="rm-label-search" for="">Search Character:</label>';
 
-    $o .= '<div>';
+    $o .= '<div class="rm-div-search">';
 
     // input Name search
     $o .= '<input class="rm-input-search"  placeholder="Character\'s Name (required)" type="search" name="name" required>';
 
-    $o .= '<select class="" type="search" name="status"><option value="">Choose a Status</option><option value="alive">Alive</option><option value="dead">Dead</option><option value="unknown">Unknown</option></select>';
+    $o .= '<select class="rm-select-search" type="search" name="status"><option value="">Choose a Status</option><option value="alive">Alive</option><option value="dead">Dead</option><option value="unknown">Unknown</option></select>';
 
     $o .= '</div>';
 
-    $o .= '<div>';
+    $o .= '<div class="rm-div-search">';
 
     $o .= '<input class="rm-input-search"  placeholder="Character\'s Type" type="search" name="type">';
 
-    $o .= '<select class="" type="search" name="gender"><option value="">Choose a Gender</option><option value="female">Female</option><option value="male">Male</option><option value="genderless">Genderless</option><option value="unknown">Unknown</option></select>';
+    $o .= '<select class="rm-select-search" type="search" name="gender"><option value="">Choose a Gender</option><option value="female">Female</option><option value="male">Male</option><option value="genderless">Genderless</option><option value="unknown">Unknown</option></select>';
 
     $o .= '</div>';
 
-    $o .= '<div>';
+    $o .= '<div class="rm-div-button">';
     
     // button
     $o .= '<button aria-label="Search" class="rm-button-search" type="submit" onclick="apiCall( this.form )"><strong>Search</strong></button>';
