@@ -11,11 +11,10 @@
 }
 
 .rm-button-search{
-    width: 15%;
+    width: 25%;
     height: 40px;
     border-radius: 0.4rem;
     border: 1px solid;
-    margin-left: 10px;
     font-size: 14px;
 }
 

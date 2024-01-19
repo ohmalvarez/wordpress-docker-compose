@@ -4,51 +4,67 @@
  * @param form The form in which is called this function on click event.
  */
 function apiCall( form ) {
-    let apiUrl = 'https://rickandmortyapi.com/api/character/?name=',
-        inputVal = form.s.value;
+    let apiUrl = 'https://rickandmortyapi.com/api/character/?',
+        valName = form.name.value,
+        valStatus = form.status.value,
+        valType = form.type.value,
+        valGender = form.gender.value;
 
     document.getElementById( 'result' ).innerHTML = '';
 
-    fetch( apiUrl + inputVal )
-        .then( ( response ) => response.json() )
-        .then( ( result ) => {
+    if ( valName ) {
+        apiUrl += 'name=' + valName;
 
-            let resultDiv = document.getElementById( 'result' ),
-                appendDiv = document.createElement( 'table' );
+        if ( valStatus )
+            apiUrl += '&status=' + valStatus;
+        if ( valType )
+            apiUrl += '&type=' + valType;
+        if ( valGender )
+            apiUrl += '&gender=' + valGender;
 
-            appendDiv.innerHTML += '<thead>' +
-                '<tr>' +
-                '<th>Name</th>' +
-                '<th>Status</th>' +
-                '<th>Species</th>' +
-                '<th>Gender</th>' +
-                '<th>Photo</th>' +
-                '</tr>' +
-                '</thead>' +
-                '<tbody>';
+        fetch( apiUrl )
+            .then( ( response ) => response.json() )
+            .then( ( result ) => {
 
-            if ( result.results ) {
-                result.results.forEach(function (value, key) {
-                    appendDiv.innerHTML += '<tr>' +
-                        '<td class="rm-td-centered">' + value.name + '</td>' +
-                        '<td class="rm-td-centered">' + value.status + '</td>' +
-                        '<td class="rm-td-centered">' + value.species + '</td>' +
-                        '<td class="rm-td-centered">' + value.gender + '</td>' +
-                        '<td class="rm-td-centered"><img src="' + value.image + '" alt="' + value.id + '" style="width: 50px; height: 50px;"></td>' +
-                        '</tr>';
-                })
-            } else
-                appendDiv.innerHTML += '<tr><td colspan="5" style="text-align: center">' + result.error + ', no results for this search (' + inputVal + ').</td></tr>';
+                let resultDiv = document.getElementById('result'),
+                    appendDiv = document.createElement('table');
 
-            appendDiv.innerHTML += '</tbody>';
-            resultDiv.innerHTML += "<h3>Results:</h3>";
+                appendDiv.innerHTML += '<thead>' +
+                    '<tr>' +
+                    '<th>Name</th>' +
+                    '<th>Status</th>' +
+                    '<th>Species</th>' +
+                    '<th>Gender</th>' +
+                    '<th>Photo</th>' +
+                    '</tr>' +
+                    '</thead>' +
+                    '<tbody>';
 
-            resultDiv.appendChild( appendDiv );
+                if (result.results) {
+                    result.results.forEach(function (value, key) {
+                        appendDiv.innerHTML += '<tr>' +
+                            '<td class="rm-td-centered">' + value.name + '</td>' +
+                            '<td class="rm-td-centered">' + value.status + '</td>' +
+                            '<td class="rm-td-centered">' + value.species + '</td>' +
+                            '<td class="rm-td-centered">' + value.gender + '</td>' +
+                            '<td class="rm-td-centered"><img src="' + value.image + '" alt="' + value.id + '" style="width: 50px; height: 50px;"></td>' +
+                            '</tr>';
+                    })
+                } else
+                    appendDiv.innerHTML += '<tr><td colspan="5" style="text-align: center">' + result.error + ', no results for this search (' + valName + ').</td></tr>';
 
-        })
-        .catch( ( error ) => {
-            console.log( error );
-        });
+                appendDiv.innerHTML += '</tbody>';
+                resultDiv.innerHTML += "<h3>Results:</h3>";
+
+                resultDiv.appendChild(appendDiv);
+
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+
+    } else
+        document.getElementById('result').innerHTML += "<h3>At least send Character's Name, dude.</h3>";
 
     event.preventDefault();
 }

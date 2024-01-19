@@ -58,9 +58,23 @@ function char_shortcode( $atts = [] ) {
 
     $o .= '<div>';
 
-    // input search
-    $o .= '<input class="rm-input-search"  placeholder="" type="search" name="s" required>';
+    // input Name search
+    $o .= '<input class="rm-input-search"  placeholder="Character\'s Name (required)" type="search" name="name" required>';
 
+    $o .= '<select class="" type="search" name="status"><option value="">Choose a Status</option><option value="alive">Alive</option><option value="dead">Dead</option><option value="unknown">Unknown</option></select>';
+
+    $o .= '</div>';
+
+    $o .= '<div>';
+
+    $o .= '<input class="rm-input-search"  placeholder="Character\'s Type" type="search" name="type">';
+
+    $o .= '<select class="" type="search" name="gender"><option value="">Choose a Gender</option><option value="female">Female</option><option value="male">Male</option><option value="genderless">Genderless</option><option value="unknown">Unknown</option></select>';
+
+    $o .= '</div>';
+
+    $o .= '<div>';
+    
     // button
     $o .= '<button aria-label="Search" class="rm-button-search" type="submit" onclick="apiCall( this.form )"><strong>Search</strong></button>';
 
