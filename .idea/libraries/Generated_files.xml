@@ -1,0 +1,26 @@
+<component name="libraryTable">
+  <library name="Generated files" type="javaScript">
+    <properties>
+      <sourceFilesUrls>
+        <item url="file://$PROJECT_DIR$/wp-content/plugins/characters/admin/js/api.min.js" />
+        <item url="file://$PROJECT_DIR$/wp-content/plugins/characters/admin/js/api.min.min.js" />
+        <item url="file://$PROJECT_DIR$/wp-includes/js/dist/block-directory.min.js" />
+        <item url="file://$PROJECT_DIR$/wp-includes/js/dist/blocks.min.js" />
+        <item url="file://$PROJECT_DIR$/wp-includes/js/dist/date.min.js" />
+        <item url="file://$PROJECT_DIR$/wp-includes/js/dist/edit-site.min.js" />
+        <item url="file://$PROJECT_DIR$/wp-includes/js/twemoji.min.js" />
+      </sourceFilesUrls>
+    </properties>
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/wp-includes/js/dist/block-directory.min.js" />
+      <root url="file://$PROJECT_DIR$/wp-includes/js/dist/blocks.min.js" />
+      <root url="file://$PROJECT_DIR$/wp-includes/js/dist/date.min.js" />
+      <root url="file://$PROJECT_DIR$/wp-includes/js/dist/edit-site.min.js" />
+      <root url="file://$PROJECT_DIR$/wp-includes/js/twemoji.min.js" />
+      <root url="file://$PROJECT_DIR$/wp-content/plugins/characters/public/js/api.min.min.js" />
+      <root url="file://$PROJECT_DIR$/wp-content/plugins/characters/public/js/api.min.js" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -29,6 +29,8 @@ function apiCall( form ) {
                 let resultDiv = document.getElementById('result'),
                     appendDiv = document.createElement('table');
 
+                resultDiv.innerHTML += "<h3>Results:</h3>";
+
                 appendDiv.innerHTML += '<thead>' +
                     '<tr>' +
                     '<th>Name</th>' +
@@ -40,23 +42,17 @@ function apiCall( form ) {
                     '</thead>' +
                     '<tbody>';
 
-                if (result.results) {
-                    result.results.forEach(function (value, key) {
-                        appendDiv.innerHTML += '<tr>' +
-                            '<td class="rm-td-centered">' + value.name + '</td>' +
-                            '<td class="rm-td-centered">' + value.status + '</td>' +
-                            '<td class="rm-td-centered">' + value.species + '</td>' +
-                            '<td class="rm-td-centered">' + value.gender + '</td>' +
-                            '<td class="rm-td-centered"><img src="' + value.image + '" alt="' + value.id + '" style="width: 50px; height: 50px;"></td>' +
-                            '</tr>';
-                    })
+                if ( result.results ) {
+                    console.log( 'Results: ' + result.info.count );
+                    appendDiv.innerHTML += appendResult(result.results);
                 } else
                     appendDiv.innerHTML += '<tr><td colspan="5" style="text-align: center">' + result.error + ', no results for this search (' + valName + ').</td></tr>';
 
                 appendDiv.innerHTML += '</tbody>';
-                resultDiv.innerHTML += "<h3>Results:</h3>";
 
-                resultDiv.appendChild(appendDiv);
+                appendDiv.innerHTML += appendPagination();// working on this
+
+                resultDiv.appendChild( appendDiv );
 
             })
             .catch((error) => {
@@ -67,4 +63,43 @@ function apiCall( form ) {
         document.getElementById('result').innerHTML += "<h3>At least send Character's Name, dude.</h3>";
 
     event.preventDefault();
+}
+
+function appendResult( data ){
+    let html = '';
+
+    data.forEach(function (value, key) {
+        html += '<tr>' +
+            '<td class="rm-td-centered">' + value.name + '</td>' +
+            '<td class="rm-td-centered">' + value.status + '</td>' +
+            '<td class="rm-td-centered">' + value.species + '</td>' +
+            '<td class="rm-td-centered">' + value.gender + '</td>' +
+            '<td class="rm-td-centered"><img src="' + value.image + '" alt="' + value.id + '" style="width: 50px; height: 50px;"></td>' +
+            '</tr>';
+    });
+
+    return html;
+}
+
+function appendPagination(){
+    let html = '';
+
+    html += '<div class="rm-pagination"><nav><ul>';
+
+    html += '<li>';
+    html += '<a>< Previous</a>';
+    html += '</li>';
+
+    html += '<li>';
+    html += '<a>1</a>';
+    html += '</li>';
+
+    html += '<li>';
+    html += '<a>Next ></a>';
+    // html += '<a href="' + ( ( result.info.next ) ? result.info.next : '#' ) + '">Next</a>';
+    html += '</li>';
+
+    html += '</ul></nav></div>';
+
+    return html;
 }

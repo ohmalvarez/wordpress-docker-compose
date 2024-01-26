@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Characters, Rick&Morty Series
-Description: Used to <strong>enable a shortcode</strong> on pages/posts to show a search bar to filter data characters of the Rick and Morty series. Juts add <strong>'[chars][/chars]'</strong> shortcode on any place of the page/post and it will render a search bar capable to search a character of the series by name (for the moment), and it will show the results on a table element.
+Description: Used to <strong>enable a shortcode</strong> on pages/posts to show a search bar to filter data characters of the Rick and Morty series. Juts add <strong>'[chars][/chars]'</strong> shortcode on any place of the page/post, and it will render a search bar capable to search a character of the series. After that, it will show the results on a table element.
 Version: 1.0
 Author: Omar Alvarez
 Author URI: https://github.com/ohmalvarez
@@ -18,8 +18,8 @@ if ( ! defined( "ABSPATH" ) ) {
 /**
  * I let this files public (any page/post) because shortcode could be added with no limitation.
  */
-wp_register_style('rm_style', plugin_dir_url(__FILE__) . 'admin/css/style.min.css');
-wp_register_script('rm_js', plugin_dir_url(__FILE__) . 'admin/js/api.min.js');
+wp_register_style('rm_style', plugin_dir_url(__FILE__) . 'public/css/style.min.css');
+wp_register_script('rm_js', plugin_dir_url(__FILE__) . 'public/js/api.min.js');
 
 wp_enqueue_style('rm_style');
 wp_enqueue_script('rm_js');
@@ -37,7 +37,7 @@ function check_user_caps(){
         ! current_user_can( 'install_plugins' ) &&
         ! current_user_can( 'activate_plugins' )
     ) {
-        exit( 'Your profile cannot install this plugin.' );
+        exit( 'Your profile cannot upload/install/activate this plugin.' );
     }
 }
 
